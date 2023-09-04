@@ -25,7 +25,7 @@ public class UserService {
     public Integer addUser(User user){
 
         //Jut simply add the user to the Db and return the userId returned by the repository
-        userRepository.save(user);
+        user =  userRepository.save(user);
         return user.getId();
     }
 
@@ -42,7 +42,7 @@ public class UserService {
         Integer count = 0;
 
         for(WebSeries webSeries : webSeriesList){
-            if(age == webSeries.getAgeLimit()){
+            if(age >= webSeries.getAgeLimit()){
                 if(subscription.getSubscriptionType().equals(SubscriptionType.ELITE)){
                     count++;
                 }else if(subscription.getSubscriptionType().equals(SubscriptionType.PRO)){
